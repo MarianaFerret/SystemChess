@@ -4,7 +4,7 @@ public class Bord {
     
     private int rows;
     private int columns;
-    private Picie[][] pieces;
+    private Piece[][] pieces;
 
     public Bord(int rows, int columns){
         if(rows < 1 || columns < 1){
@@ -13,7 +13,7 @@ public class Bord {
 
         this.rows = rows;
         this.columns = columns;
-        pieces = new Picie[rows][columns];
+        pieces = new Piece[rows][columns];
 
     }
 
@@ -25,26 +25,26 @@ public class Bord {
         return columns;
     }
 
-    public Picie picie(int rows, int columns){
+    public Piece piece(int rows, int columns){
         if(!PositionExists(rows, columns)){
             throw new BordExepction("A posição não existe no tabuleito");
         }
         return pieces[rows][columns];
     }
 
-    public Picie picie(Position position){
+    public Piece piece(Position position){
         if(!PositionExists(position)){
             throw new BordExepction("A posição não existe no tabuleito");
         }
         return pieces[position.getRow()][position.getColumn()];
     }
 
-    public void placePicie(Picie picie, Position position){
-        if(ThereIsAPicie(position)){
+    public void placePiece(Piece piece, Position position){
+        if(ThereIsAPiece(position)){
             throw new BordExepction("já existe uma peça nessa posição");
         }
-        pieces[position.getRow()][position.getColumn()] = picie;
-        picie.position = position;
+        pieces[position.getRow()][position.getColumn()] = piece;
+        piece.position = position;
     }
 
      public boolean PositionExists(int row, int column){
@@ -56,10 +56,10 @@ public class Bord {
 
     }
 
-    public boolean ThereIsAPicie(Position position){
+    public boolean ThereIsAPiece(Position position){
         if(!PositionExists(position)){
             throw new BordExepction("A posição não existe no tabuleito");
         }
-        return picie(position) != null;
+        return piece(position) != null;
     }
 }

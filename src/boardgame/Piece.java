@@ -2,12 +2,12 @@ package boardgame;
 
 import boardgame.Position;
 
-public class Picie {
+public class Piece {
     
     protected Position position;
     private Bord bord;
 
-    public Picie(Bord bord) {
+    public Piece(Bord bord) {
         this.position = null;
         this.bord = bord;
     }
